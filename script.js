@@ -1,3 +1,11 @@
+const numPadContainer = document.querySelector(".num-pad");
+for(let i = 9; i >= 0; i--) {
+    let numDiv = document.createElement("div");
+    numDiv.textContent = i;
+    numDiv.classList.add("number");
+    numPadContainer.appendChild(numDiv);
+}
+
 function add(a, b) {
     return a + b;
 }
