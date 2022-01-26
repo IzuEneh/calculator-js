@@ -1,8 +1,17 @@
-const numPadContainer = document.querySelector(".num-pad");
+const operationSymbols = ['CE', '+', '-', '*', '/', '=', ];
+const operationsContainer = document.querySelector('.operation-btns');
+const numPadContainer = document.querySelector(".num-btns");
+for (sym of operationSymbols) {
+    let symDiv = document.createElement("div");
+    symDiv.textContent = sym;
+    symDiv.classList.add("operation-btn");
+    operationsContainer.appendChild(symDiv);
+    
+}
 for(let i = 9; i >= 0; i--) {
     let numDiv = document.createElement("div");
     numDiv.textContent = i;
-    numDiv.classList.add("number");
+    numDiv.classList.add("num-btn");
     numPadContainer.appendChild(numDiv);
 }
 
