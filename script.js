@@ -1,6 +1,7 @@
 const operationSymbols = ['CE', '+', '-', '*', '/', '=', ];
 const operationsContainer = document.querySelector('.operation-btns');
 const numPadContainer = document.querySelector(".num-btns");
+const screenDiv = document.querySelector('.screen');
 
 for (sym of operationSymbols) {
     let symDiv = document.createElement("div");
@@ -9,11 +10,17 @@ for (sym of operationSymbols) {
     operationsContainer.appendChild(symDiv);
     
 }
+
 for(let i = 9; i >= 0; i--) {
     let numDiv = document.createElement("div");
     numDiv.textContent = i;
     numDiv.classList.add("num-btn");
     numPadContainer.appendChild(numDiv);
+    numDiv.addEventListener('click', addToScreen);
+}
+
+function addToScreen(e) {
+    screenDiv.textContent += this.textContent;
 }
 
 function add(a, b) {
