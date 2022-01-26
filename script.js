@@ -1,6 +1,7 @@
 const operationSymbols = ['CE', '+', '-', '*', '/', '=', ];
 const operationsContainer = document.querySelector('.operation-btns');
 const numPadContainer = document.querySelector(".num-btns");
+
 for (sym of operationSymbols) {
     let symDiv = document.createElement("div");
     symDiv.textContent = sym;
