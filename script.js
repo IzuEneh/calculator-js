@@ -1,25 +1,26 @@
 const operationSymbols = ['CE', '+', '-', '*', '/', '=', ];
+const numPadSymbols = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0, '.']
 const operationsContainer = document.querySelector('.operation-btns');
 const numPadContainer = document.querySelector(".num-btns");
 const screenDiv = document.querySelector('.screen');
 
-for (sym of operationSymbols) {
-    let symDiv = document.createElement("div");
-    symDiv.textContent = sym;
-    symDiv.classList.add("operation-btn");
-    operationsContainer.appendChild(symDiv);
-    
-}
+createElementsFromArrayInDiv(operationSymbols, operationsContainer, "operation-btn");
+createElementsFromArrayInDiv(numPadSymbols, numPadContainer, "num-btn");
 
-for(let i = 9; i >= 0; i--) {
-    let numDiv = document.createElement("div");
-    numDiv.textContent = i;
-    numDiv.classList.add("num-btn");
-    numPadContainer.appendChild(numDiv);
-    numDiv.addEventListener('click', addToScreen);
+const numPadButtons = [...document.querySelectorAll('.num-btn')];
+numPadButtons.forEach(num => num.addEventListener('click', addToScreen))
+
+function createElementsFromArrayInDiv(array, div, className) {
+    for(item of array) {
+        let createdDiv = document.createElement("div");
+        createdDiv.textContent = item;
+        createdDiv.classList.add(className);
+        div.appendChild(createdDiv);
+    }
 }
 
 function addToScreen(e) {
+    if(this.textContent === '.' && screenDiv.textContent.includes('.')) return;
     screenDiv.textContent += this.textContent;
 }
 
